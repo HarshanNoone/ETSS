@@ -1,0 +1,29 @@
+clc;
+clear all;
+close all;
+fs = 500;
+t = 0:1/fs:1;
+signal = randn(size(t));
+plot(signal);
+power_spectrum_estimation(signal,fs);
+% Estimation Function
+function power_spectrum_estimation(signal, fs)
+%UNTITLED2 Summary of this function goes here
+% Detailed explanation goes here
+[pxx, f] = periodogram(signal,[],[],fs);
+plot(f, 10*log10(pxx));
+xlabel(‘Frequency (Hz)’);
+ylabel(‘Power/Frequency(Db/Hz)’);
+title(‘Power Spectrum Estimation(Periodogram)’)
+end 
+
+Example – 
+PSD Estimation with Default Window – 
+n = 0:319;
+x = cos(pi/4*n)+randn(size(n));
+[pxx,w] = periodogram(x);
+plot(w,10*log10(pxx)) 
+PSD Estimation with specific Hamming Window - 
+n = 0:319;
+x = cos(pi/4*n)+randn(size(n));
+periodogram(x,hamming(length(x)))
