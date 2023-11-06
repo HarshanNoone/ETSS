@@ -1,3 +1,4 @@
+% Z- transform for discrete time signal
 % main function
 clc;
 clear all;
