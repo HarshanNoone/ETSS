@@ -1,3 +1,4 @@
+% FIR Filter using least square method
 clc;
 clear all;
 close all;
