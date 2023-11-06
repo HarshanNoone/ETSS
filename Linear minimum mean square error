@@ -1,3 +1,4 @@
+% Linear minimum mean square error method
 clc;
 clear all;
 close all;
