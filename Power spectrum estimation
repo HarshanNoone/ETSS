@@ -28,3 +28,12 @@ PSD Estimation with specific Hamming Window -
 n = 0:319;
 x = cos(pi/4*n)+randn(size(n));
 periodogram(x,hamming(length(x)))
+
+n = 0:319;
+x = cos(pi/4*n)+randn(size(n));
+[pxx,w] = periodogram(x);
+plot(w,10*log10(pxx)) 
+PSD Estimation with specific Hamming Window - 
+n = 0:319;
+x = cos(pi/4*n)+randn(size(n));
+periodogram(x,hamming(length(x)))
