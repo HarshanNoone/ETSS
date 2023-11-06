@@ -1,0 +1,35 @@
+% main function
+clc;
+clear all;
+close all;
+n = 0:10;
+x = (0.9).^n;
+num = [1, -0.5];
+den = [1, -0.9];
+z_value = 0.8;
+Xz_value = z_transform(x,n,z_value);
+isStable = check_stability(num,den);
+disp(['System Stability: ' , num2str(isStable)]);
+Fs = 1000;
+[freq_response, frequencies] = freq_response(num, den, Fs);
+% z_transform Function
+function Xz = z_transform(x, n,z)
+Xz = sum(x.*z.^(-n));
+End 
+% check_stability Function
+function isStable = check_stability(num, den)
+poles = roots(den);
+isStable = all(abs(poles)<1);
+end 
+% Freq_response Function
+function [H,f] = freq_response(num, den, Fs)
+omega = linspace(0, pi, 1000);
+f = omega * Fs/(2*pi);
+H = freqz(num, den, omega);
+figure;
+plot(f, 20*log10(abs(H)));
+title('Frequency Response');
+xlabel('Frequency (Hz)');
+ylabel('Magnitude (dB)');
+grid on; 
+end
