@@ -1,0 +1,19 @@
+clc;
+clear all;
+close all;
+true_X = 5;
+observation_Y = true_X + 2*randn(1);
+mean_X = 0;
+variance_X = 1;
+variance_noise = 2;
+m_X = mean_X;
+m_Y = 0;
+C_XY = 1;
+C_YY = variance_noise;
+LMMSE_estimate = m_X + C_XY* (1/C_YY) * 
+(observation_Y - m_Y);
+disp(['True value of X: ', num2str(true_X)]);
+disp(['Noisy observation Y: ', 
+num2str(observation_Y)]);
+disp(['LMMSE estimate of X: ', 
+num2str(LMMSE_estimate)]);
