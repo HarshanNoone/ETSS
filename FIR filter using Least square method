@@ -1,0 +1,25 @@
+clc;
+clear all;
+close all;
+fs = 1000;
+f_cutoff = 100;
+filter_order = 50;
+desired_amplitude = [1,1,0,0];
+frequency_points = [0,f_cutoff, f_cutoff+50, fs/2]/(fs/2);
+filter_coefficients = firls(filter_order, frequency_points, 
+desired_amplitude);
+freqz(filter_coefficients, 1, 1024, fs);
+figure;
+stem(0:filter_order, filter_coefficients);
+title('Filter Impulse Response');
+xlabel('Sample');
+ylabel('Amplitude');
+input_signal = randn(1, 1000);
+filtered_signal = filter(filter_coefficients, 1, input_signal);
+figure;
+subplot(2,1,1);
+plot(input_signal);
+title('Original Signal');
+subplot(2,1,2);
+plot(filtered_signal);
+title('Filtered Signal');
