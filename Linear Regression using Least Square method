@@ -1,3 +1,4 @@
+% Linear regression equation using least square method
 clc;
 clear all;
 close all;
